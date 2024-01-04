@@ -33,7 +33,7 @@ Notes:
 // Solution
 
 
-let whatTimeIsIt = function(angle) {
+function whatTimeIsIt(angle) {
   let hour = Math.floor(angle/30), minutes = Math.floor((angle%30)*2);
   if (hour < 10) {hour = "0" + hour};
   if (hour <= 0) {hour = 12};
@@ -42,3 +42,23 @@ let whatTimeIsIt = function(angle) {
 }
 
 // or
+
+let whatTimeIsIt = function(angle) {
+  // 1 degree  is 2 minutes
+  
+  let conversion = Math.floor(angle * 2); // Convert degrees to minutes. Round down
+  let hour = Math.floor(conversion / 60); // Calculate hours. Round down 
+  let minute = conversion - (hour * 60); // Calculate minutes
+  
+  if (hour === 00){
+    hour = 12;
+  }
+  if (hour < 10){
+    hour = "0" + hour;
+  }
+  if (minute < 10) {
+    minute = "0" + minute;
+  }
+  
+  return hour + ":" + minute;
+}
